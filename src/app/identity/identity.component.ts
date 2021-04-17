@@ -10,10 +10,8 @@ import {
 @Component({
   selector: "app-identity",
   templateUrl: "./identity.component.html",
-  styleUrls: ["./identity.component.css"],
-  viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective }
-  ]
+  styleUrls: ["./identity.component.css"]
+  // providers: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
 })
 export class IdentityComponent implements OnInit {
   @Input() formGroup: FormGroup;
@@ -21,6 +19,8 @@ export class IdentityComponent implements OnInit {
   constructor(private parent: FormGroupDirective) {}
 
   ngOnInit() {
+    console.log(this.parent);
+
     this.parent.form.setControl(
       "firstName",
       new FormControl(null, [Validators.required])
